@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+  <title>Simple chat bot</title>
+</head>
+<body>
+  <div class="chat-panel">
+    <div class="chat-messages-wrap">
+      <div class="chat-messages"></div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" name="message" placeholder="Enter a message">
+      <div class="button-send"></div>
+    </div>
+  </div>
+
+  <script>
+    const messagesContainer = document.querySelector(".chat-messages");
+    const inputField = document.querySelector('input[name="message"]');
+    const sendButton = document.querySelector(".button-send");
+
+    function addMessageView(view) {
+      messagesContainer.append(view);
+      view.scrollIntoView()
+    }
+
+    function createMessageView(text, isMyMessage) {
+      const view = document.createElement('span');
+      view.textContent = text;
+      if (isMyMessage) {
+        view.classList.add("message");
+        view.classList.add("my-message");
+      } else { 
+        view.classList.add("message");
+        view.classList.add("other-message");
+      }
+      return view;
+    }
+
+    function sendMessageByBot(text) {
+      setTimeout(() => {
+        const answerText = getAnswerText(text)
+        const view = createMessageView(answerText, false)
+        addMessageView(view);
+      }, 1000);
+    }
+    const himsg = ["hi","hello",'ss','ssss',''];
+  //  const ruprivet = ("привет","privet",'здравствуйте','ssss','');
+    function getAnswerText(text) {
+        text = text.toLowerCase()
+      
+  /*      if (text.includes(ruprivet)) {
+            return "привет";
+        } */
+        if (text.includes('как дела')) {
+            return "ok";
+        }
+        if (text.includes('?')) {
+            return "hello world!";
+        }
+
+        const hashimsg = himsg.some((value) => {
+            return text.includes(value)
+        });
+
+        if (hashimsg) {
+            return "hello world!";
+        }
+    }
+
+    function sendMessage() {
+      let message = inputField.value.trim()
+      if (message == "") return;
+
+      inputField.value = ""
+      addMessageView(createMessageView(message, true));
+
+      sendMessageByBot(message);
+    }
+
+    sendButton.onclick = sendMessage
+    inputField.onkeypress = function(event) {
+      if (event.code.toLowerCase() == "enter") {
+        sendMessage()
+      }
+    }
+  </script>
+</body>
+</html>

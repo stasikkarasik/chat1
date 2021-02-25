@@ -1,0 +1,74 @@
+  body {
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+      font-size: 16px;
+    }
+    .chat-panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      background: #ffffff;
+      padding: 0px;
+      margin: 0px;
+    }
+    .chat-messages-wrap {
+      position: relative;
+      flex: 1 1 auto;
+      overflow-y: scroll;
+    }
+    .chat-messages {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: url(https://i.pinimg.com/originals/51/ed/c0/51edc046eb80046ee4755ee71d0f19ca.jpg) ;
+      min-height: 100%;
+      width: 100;
+    }
+    .chat-input {
+      position: relative;
+      display: flex;
+      flex: 0 0 auto;
+    }
+    .chat-input>input[name="message"] {
+      flex-grow: 1;
+      font-size: 20px;
+    }
+    .button-send {
+      background: url(https://cdn2.iconfinder.com/data/icons/dark-action-bar-2/96/send-128.png) no-repeat;
+      background-size: contain;
+      width: 40px;
+      height: 40px;
+    }
+    .message {
+      position: relative;
+      display: inline-block;
+      align-self: flex-start;
+      padding: 8px;
+      border-radius: 8px;
+      margin: 0px 8px 4px;
+      max-width: 90%;
+      animation: show-anim 0.5s ease-in 0.1s both;
+    }
+    .my-message {
+      align-self: flex-end;
+      background: #eef591;
+      border-bottom-right-radius: 0px;
+    }
+    .other-message {
+      background: #fcfcfc;
+      border-bottom-left-radius: 0px;
+    }
+
+    @keyframes show-anim {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
